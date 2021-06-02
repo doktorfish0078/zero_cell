@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css" class="">
+    <meta charset='utf-8' />
+    <title></title>
+</head>
+
+<body>
+    <div class="main_container">
+        <div class="pre_game" id='pre_game'>
+            <div class="title_game">
+                New game zero_cell
+            </div>
+            <div class="pre_game_btns">
+                <div class="pre_button_game" id='btn_lvl_easy' style="background-color: #00b7c2;">
+                    Easy
+                </div>
+                <div class="pre_button_game" id='btn_lvl_medium' style="background-color: #0f4c75;">
+                    Medium
+                </div>
+                <div class="pre_button_game" id='btn_lvl_hard' style="background-color: #1b262c;">
+                    Hard
+                </div>
+            </div>
+        </div>
+        <div class="game" id="game" style="display: none">
+            <div class="header_game">
+                <div class="group_btns_action">
+                    <div class="button_game" id='btn_new_game'>
+                        New game
+                    </div>
+                    <div class="button_game" id='btn_restart'>
+                        Restart
+                    </div>
+                    <div class="button_game" id='btn_backstep'>
+                        Back
+                    </div>
+                </div>
+                <div class="info_game">
+                    <div class="score" id='score'>
+
+                    </div>
+                </div>
+            </div>
+            <canvas class="canvas" id="canvas">
+
+			</canvas>
+        </div>
+
+    </div>
+
+
+</body>
+
+<script src='game.js'>
+</script>
+
+</html>
