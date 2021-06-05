@@ -2,6 +2,7 @@ html,
 body,
 .main_container {
     height: 100%;
+    user-select: none;
 }
 
 .main_container {

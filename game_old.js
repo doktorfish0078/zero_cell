@@ -42,7 +42,7 @@ document.getElementById('btn_restart').addEventListener('click', function() {
     table = JSON.parse(history_json[0]);
     history_json = [];
     update_history_json();
-    resresh_progress();
+    refresh_progress();
     draw_table();
 });
 
@@ -62,10 +62,10 @@ function game_start(mode) {
     document.getElementById('pre_game').style.display = 'none';
     document.getElementById('game').style.display = 'block';
     history_json = [];
-    recording_table_rand_nums(1, max_value_cell);
+    recording_table(1, max_value_cell);
     calcutaled_sum_cells();
     start_sum_cells = sum_cells;
-    resresh_progress();
+    refresh_progress();
     update_history_json();
     draw_table();
 }
@@ -107,7 +107,7 @@ function back_step() {
         history_json.pop();
         let temp_table = JSON.parse(history_json[history_json.length - 1]);
         table = temp_table;
-        resresh_progress();
+        refresh_progress();
         draw_table();
         game_is_over();
     }
@@ -134,6 +134,24 @@ function recording_table_rand_nums(min, max) {
     for (let i = 0; i < count_rows; i++) {
         for (let j = 0; j < count_collums; j++) {
             table[i][j] = getRandomInt(min, max);
+        }
+    }
+}
+
+function recording_table(min, max) {
+    for (let i = 0; i < count_rows; i++)
+        for (let j = 0; j < count_collums; j++)
+            table[i][j] = 1;
+
+    for (let n = 0; n < 15; n++) {
+        let x = getRandomInt(0, 10);
+        let y = getRandomInt(0, 10);
+        for (let i = x - 1; i < x + 2; i++) {
+            for (let j = y - 1; j < y + 2; j++) {
+                if ((i >= 0 && i <= 9 && j >= 0 && j <= 9))
+                    if (table[i][j] < max - 1)
+                        table[i][j]++;
+            }
         }
     }
 }
@@ -173,7 +191,7 @@ function check_click(event) {
         update_history_json();
     }
 
-    resresh_progress();
+    refresh_progress();
     draw_table();
     game_is_over();
 }
@@ -185,7 +203,7 @@ function calcutaled_sum_cells() {
             sum_cells += table[i][j];
 }
 
-function resresh_progress() {
+function refresh_progress() {
     calcutaled_sum_cells();
     score.innerHTML = `progress: ${get_progress_game_now()}%`;
 }
